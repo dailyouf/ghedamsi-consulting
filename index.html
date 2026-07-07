@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#FFFFFF" id="metaTheme"/>
-<script>document.documentElement.dataset.theme=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";</script>
+<script>document.documentElement.dataset.theme="light";</script>
 <title>GHEDAMSI Energy &amp; Power Electronics Consulting — Formations &amp; expertise en énergie</title>
 <meta name="description" content="Formations spécialisées, consulting industriel et expertise scientifique en électronique de puissance, énergies renouvelables, smart grids et systèmes énergétiques intelligents. Prof. Kaci Ghedamsi, plus de 20 ans d'expérience universitaire et industrielle."/>
 <meta property="og:title" content="GHEDAMSI Energy &amp; Power Electronics Consulting"/>
@@ -1311,7 +1311,6 @@ section[id]{scroll-margin-top:84px}
   var root = document.documentElement;
 
   /* ── Mode clair / sombre ─────────────────────────────────── */
-  var mql = window.matchMedia("(prefers-color-scheme: dark)");
   var toggle = document.getElementById("themeToggle");
   var metaTheme = document.getElementById("metaTheme");
   var userChoice = null; /* devient "light" ou "dark" après un clic */
@@ -1327,7 +1326,7 @@ section[id]{scroll-margin-top:84px}
        décommentez la ligne suivante :
        try{ localStorage.setItem("theme", t); }catch(e){} */
   }
-  applyTheme(root.dataset.theme || (mql.matches ? "dark" : "light"));
+  applyTheme(root.dataset.theme || "light");
   /* Pour restaurer un choix mémorisé au chargement (site déployé), décommentez :
      try{ var saved = localStorage.getItem("theme");
           if(saved){ userChoice = saved; applyTheme(saved); } }catch(e){} */
@@ -1337,10 +1336,6 @@ section[id]{scroll-margin-top:84px}
       applyTheme(userChoice);
     });
   }
-  var onSystemChange = function(e){ if(!userChoice) applyTheme(e.matches ? "dark" : "light"); };
-  if(mql.addEventListener) mql.addEventListener("change", onSystemChange);
-  else if(mql.addListener) mql.addListener(onSystemChange);
-
   /* ── Année automatique ───────────────────────────────────── */
   document.getElementById("year").textContent = new Date().getFullYear();
 
